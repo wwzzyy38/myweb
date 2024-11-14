@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+  .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 25px;
+      height: 0;
+      overflow: hidden;
+    }
+
+  .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -100;
+    }
+
+  .click-text {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 25px; /* 增大字号 */
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+<!-- 使用HTML5 Audio元素播放背景音乐 -->
+
+    <audio id="bgm" controls="controls" muted="muted" autoplay="autoplay" loop="loop" >
+      <!-- 优先尝试加载MP3格式音频 -->
+      <source src="./image/bgm1.mp3" type="audio/mpeg">
+      <!-- 若MP3格式不可用，再尝试加载OGG格式音频 -->
+      <source src="./image/bgm1.ogg" type="audio/ogg">
+    </audio>
+	
+  <div class="video-container">
+    <video class="video-background" autoplay muted>
+      <source src="./image/launch.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <p class="click-text"><a href="web/wyz.html">点击进入</a></p>
+  </div>
+
+  <script>
+	  // 在页面加载完成后，尝试手动触发音频播放（针对部分浏览器限制自动播放的情况）
+        window.onload = function () {
+            var audio = document.getElementById('bgm');
+            // 先暂停音频（如果之前有自动播放尝试但被浏览器阻止）
+            audio.pause();
+            // 再播放音频，这样可能绕过部分浏览器的自动播放限制
+            audio.play();
+        };
+
+        // 当用户首次与页面进行交互（比如点击页面任意位置）时，再次播放音频以确保声音正常响起
+        document.addEventListener('click', function () {
+            var audio = document.getElementById('bgm');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+	
+        var myVideo = document.querySelector('.video-background');
+        myVideo.addEventListener('ended', function () {
+            myVideo.pause();
+            myVideo.loop = false;
+            myVideo.currentTime = myVideo.duration;
+        });
+    var myVideo = document.querySelector('.video-background');
+    myVideo.addEventListener('ended', function () {
+      myVideo.pause();
+      myVideo.loop = false;
+      myVideo.currentTime = myVideo.duration;
+    });
+  </script>
+
+</body>
+
+</html>

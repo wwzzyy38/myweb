@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* 表格样式 */
+        table {
+            width: 810px;
+            height: 4395px;
+            border: 1px solid;
+            margin: 0 auto; /* 让表格在页面水平居中 */
+        }
+
+        /* 视频容器样式 */
+      .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* 使用视口高度单位，确保视频容器撑满整个可视区域高度 */
+            z-index: -1; /* 将视频容器的层级设置得比表格低，使其在表格下方 */
+            overflow: hidden;
+        }
+
+        /* 视频背景样式 */
+      .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateZ(0); /* 用于硬件加速，防止视频滑动 */
+        }
+        /* 点击文本样式 */
+      .click-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 25px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    body,td,th {
+	color: #FFFFFF;
+}
+    </style>
+<meta charset="utf-8">
+</head>
+
+<body>
+<!-- 使用HTML5 Audio元素播放背景音乐 -->
+
+    <audio id="bgm" controls="controls" muted="muted" autoplay="autoplay" loop="loop" >
+      <!-- 优先尝试加载MP3格式音频 -->
+      <source src="../image/bgm2.mp3" type="audio/mpeg">
+      <!-- 若MP3格式不可用，再尝试加载OGG格式音频 -->
+      <source src="../image/bgm2.ogg" type="audio/ogg">
+    </audio>
+  <table width="924" height="6462">
+        <tbody>
+            <tr>
+                <td width="916" height="50" align="center" bgcolor="#FCFF7D"><strong>注：此页面为本人最近常玩的的游戏，仅做介绍，及以其为线索讲述自己的体会和感受，讲述第六艺术的体验，分为介绍，本人感受和体悟三个部分，对游戏，本人不做任何推荐，游戏中的任何观点立场与本人无关。</strong></td>
+            </tr>
+            <tr>
+                <td height="450"><img src="../image/genshin.jpg" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+                <td height="100" align="center" valign="middle">《原神》这款游戏是本人入坑比较早的一款游戏，本人认为也算是第一款真正意义上的拥有独立剧情的，开放世界的国产游戏，也是因为它的出现，彻底打破了国产游戏只会卖皮肤圈钱，而不重视剧情体验的“传统”，我认为它可以说是第一款向西方标准看齐的准3A作品。虽然它确实有不少令人头疼的缺点，但确实可以说是某种意义上的开山之作。</td>
+            </tr>
+            <tr>
+                <td height="450"><img src="../image/5.1.jpg" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+                <td height="100" align="center" valign="middle" ><p>剧情游戏最重要的当然是剧情，《原神》的剧情应该说有好有坏，前几章主线基本重复着找东西--送东西的循环，甚至出现过一些令人反感的剧情，但之后的剧情总体来讲就有了一些深度，有了一些感人之处，尤其是新推出的剧情，充分展示了人类在天灾之前的渺小，同时也体现了人类的团结和战争的残酷以及生命的易逝。</p></td>
+            </tr>
+            <tr>
+                <td height="450"><img src="../image/4.2.jpg" alt="" width="800" height="450" usemap="#Map2"/></td>
+            </tr>
+            <tr>
+                <td height="100" align="center">谈到这款游戏，不得不提到“水军”和“节奏”问题，这是当代互联网所面临的一个严重问题。所谓“水军”、“节奏”即是一群人到某个特定的评论区发表大量带有意见性的观点，试图让将舆论带到某个特定的，尤其是不利的方向，以达成某种利益。这件事在这款游戏上得到了深入的体现，无论游戏中出现了何种或大或小的问题，总有一群分不清是ai还是真人的账号发表负面看法，而且角度清奇，甚至在一些和游戏无关但含有某些关键词的视频里也会出现相同言论，我不禁思考，信息时代，我们的观点究竟还是“我们的观点”吗。</td>
+            </tr>
+            <tr>
+                <td width="800" height="450"><img src="../image/20771.png" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+                <td height="100" align="center" valign="middle" >这是一个最好的时代，在未来，人类征服了太空，在广阔的地外轨道建立了空间站殖民地，将拉格朗日点尽数据为己有。在征服太空的同时，人类也征服了自身，人类制造出了先进的浮空车，研发了各种各样的义体，还研发出了数字生命技术，使人类真正实现了“永生”。然而，这又是一个最坏的时代。因为上述的科技成果只能被少数人拥有。在那里，资本控制了一切，它占据河流与土地，占据市场与政府。底层人民只能吃合成食物，穿最廉价的衣服，在无休无止的枪声中心惊胆战地艰难度日。</td>
+            </tr>
+            <tr>
+                <td height="382"><img src="../image/20773.png" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+              <td height="100" align="center" valign="middle" >2077的主题应当是反资本，反垄断，但黑色幽默的是，这款游戏当年以半成品的质量发行，却也是受资本的胁迫。我在游戏发布宣传片时就已经对这款游戏产生了强烈的兴趣，不过说实话，它的表现确实让我有些失望。不过，CDPR的坚持优化还是起了很大作用，随着bug的修复、机制的完善、剧情的推出，游戏的风评逐渐向好。在今年暑假期间，新DLC的发布填上了最后一块砖，游戏性大大加强，游戏也好评如潮。</td>
+            </tr>
+            <tr>
+              <td height="382"><img src="../image/20772.png" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+              <td height="100" align="center" valign="middle" >关于这款游戏的看法应当是两方面的。一方面，它引起了我对科技进步的思考：科技进步，生产力发展，这到底意味着人们的生活越来越好，还是意味着工作岗位越来越少？科技被用于改造人们的生活，会不会被用来压迫、统治人们？另一方面，我意识到，程序员就要对自己产出的代码负责，有bug，有反馈就要修复，要不断打磨自己的作品，不断优化自己的设计，才能成为一名合格的程序工作者。</td>
+            </tr>
+            <tr>
+              <td height="382"><img src="../image/hoi2.png" alt="" width="800" height="450" usemap="#Map3"/></td>
+            </tr>
+            <tr>
+              <td height="150" align="center" valign="middle" ><p><em>大炮、防线、国际援助，这些都不重要。一个士兵必须意识到，他，正在保卫自己的祖国。——卡尔·古斯塔夫·埃米尔·曼纳海姆（芬兰）</em></p>
+              <p>1936，一个混乱的年代，英法两国正在实行它们得意的绥靖政策，德国、意大利正厉兵秣马，磨拳擦掌，伊比利亚困于政治乱局，巴尔干依然不得安宁，大洋彼岸，美国正缓慢从大萧条中恢复，而远东，日本正对中国虎视眈眈。和平来之不易，却又转瞬即逝。张伯伦失败了，因为德国撕毁了约定；达拉第失败了，因为法国在德军面前毫无抵抗能力；希特勒也失败了，他将德国带上了一条不归路，世界生灵涂炭，人民一无所有，国家分裂，往日不再。</p></td>
+            </tr>
+            <tr>
+              <td height="382"><img src="../image/hoi3.png" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+              <td height="150" align="center" valign="middle" ><p><em>黑格尔在某个地方说过，一切伟大的世界历史事变和人物，可以说都出现两次。他忘记补充一点:第一次是作为悲剧出现，第二次是作为笑剧出现。——卡尔·马克思</em></p>
+              <p><em>Hearts of Iron IV</em>   一款目前为止最全面，最丰富的二战题材即时战略游戏，模拟了最多从1936--1949年13年间的世界局势。因为其丰富的内容和优秀的机制，我早在初三便接触到了这款游戏，我认为，它应该是我目前为止游玩时间最长的游戏，游戏本体内容很快就可以游玩完毕，而且不少国家的可选路线都大同小异，因此难免会逐渐感到枯燥乏味。不过，丰富的玩家社群为游戏创造了不少衍生mod，这不仅使得玩家之间得以更好交流，而且也极大丰富了游戏内容和游玩体验。</p></td>
+            </tr>
+            <tr>
+              <td height="382"><img src="../image/hoi1.png" width="800" height="450" alt=""/></td>
+            </tr>
+            <tr>
+              <td height="180" align="center" valign="middle" ><p><em>我从未放弃过德国——另一个德国。总有一天，战争中那似乎不可避免的仇恨会得到扼制。总有一天，全欧罗巴人共荣共存的欧洲必将成为现实。—— 维利·勃兰特，1943年</em></p>
+              <p>从人类的祖先从非洲散布到世界各地，到古埃及的统治使犹太人流亡世界各地；从古巴比伦的灭亡，到法兰克的统一；从罗马人把旗帜插上英格兰，到奥斯曼攻入君士坦丁堡；从战壕里的泥泞，到核弹下的亡魂，红马骑士（战争）从未离开过人类世界，可是，战争究竟带给了人类什么呢？对土地、权力的渴望催生了战争，战争引发了无穷的仇恨，仇恨在某个时刻被点燃，又引发了更大的，更惨烈的战争，而这，就是人类的战争史。多少帝国完成一统，又有多少帝国消失在了历史的迷烟之中，然而“兴，百姓苦；亡，百姓苦。”历史由人民创造，而人民却又受其苦。战争永远是残忍的，的，死去的人不是游戏里伤亡人数那高达几M的冰冷数字，反对战争，是每个人类的应有之义务。</p></td>
+          </tr>
+            <tr>
+              <td height="29" align="center" valign="bottom" bgcolor="#0BC7C0">点击下图返回</td>
+          </tr>
+            <tr>
+              <td height="290" align="center" valign="middle" bgcolor="#FFFFFF"><img src="../image/12.jpg" alt="" width="800" height="450" usemap="#Map"/></td>
+            </tr>
+            <tr>
+              <td height="1000" align="center" valign="middle">&nbsp;</td>
+            </tr>
+        </tbody>
+</table>
+  <div class="video-container">
+    <video class="video-background" autoplay muted>
+            <source src="../image/cyberpunlk.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+    </video>
+
+</div>
+<map name="Map">
+  <area shape="rect" coords="3,1,806,451" href="wyz.html">
+</map>
+<map name="Map2">
+  <area shape="rect" coords="70,99,724,318" href="https://www.bilibili.com/video/BV1vu4y1b7Y9/?spm_id_from=333.999.0.0&vd_source=69af594ac52cb9264e773f1ddee65f65" target="_blank">
+</map>
+<map name="Map3">
+  <area shape="rect" coords="340,148,464,301" href="https://space.bilibili.com/676498418?spm_id_from=333.337.0.0" target="_blank">
+</map>
+<script>
+	// 在页面加载完成后，尝试手动触发音频播放（针对部分浏览器限制自动播放的情况）
+        window.onload = function () {
+            var audio = document.getElementById('bgm');
+            // 先暂停音频（如果之前有自动播放尝试但被浏览器阻止）
+            audio.pause();
+            // 再播放音频，这样可能绕过部分浏览器的自动播放限制
+            audio.play();
+        };
+
+        // 当用户首次与页面进行交互（比如点击页面任意位置）时，再次播放音频以确保声音正常响起
+        document.addEventListener('click', function () {
+            var audio = document.getElementById('bgm');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+	
+        var myVideo = document.querySelector('.video-background');
+        myVideo.addEventListener('ended', function () {
+            myVideo.pause();
+            myVideo.loop = false;
+            myVideo.currentTime = myVideo.duration;
+        });
+    </script>
+</body>
+
+</html>

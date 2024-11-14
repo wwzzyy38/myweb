@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>wyz</title>
+<style type="text/css">
+body,td,th {
+	color: #000000;
+}
+a:link {
+	color: #000AFF;
+}
+a:active {
+	color: #FF0004;
+}
+body {
+	background-image: url(../image/13.jpg);
+	background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+</style>
+</head>
+
+<body>
+	 <!-- 使用HTML5 Audio元素播放背景音乐 -->
+
+    <audio id="bgm" controls="controls" muted="muted" autoplay="autoplay" loop="loop" >
+      <!-- 优先尝试加载MP3格式音频 -->
+      <source src="../image/TNO.mp3" type="audio/mpeg">
+      <!-- 若MP3格式不可用，再尝试加载OGG格式音频 -->
+      <source src="../image/TNO.ogg" type="audio/ogg">
+    </audio>
+<table width="1643" border="1" align="center">
+  <tbody>
+    <tr>
+      <td width="284" height="580" align="center"><p><img src="../image/yin.png" width="284" height="546" alt=""/>myself</p></td>
+      <td width="1343" align="center"><p><img src="../image/10.jpg" width="1343" height="576" alt=""/></p></td>
+    </tr>
+    <tr>
+      <td height="342"><p>大家好啊，我是说的道理，今天给大家看一点想看的东西，我叫otto，来自哈姆国，高中毕业于花咲川，很高兴将与大家一同走过丰富（内卷）的大学四年。我喜欢二次元，同时也是一名游戏爱好者。篮球是我最喜欢的运动项目。作为一名计算机专业的学生，我对C语言也有一定心得，请在我的网页中了解我吧。</p></td>
+      <td align="center"><p><img src="../image/3.jpg" width="447" height="300" alt=""/><img src="../image/4.jpg" width="447" height="300" alt=""/><img src="../image/11.jpg" width="447" height="300" alt=""/></p>
+      <p>and my life</p></td>
+    </tr>
+  </tbody>
+</table>
+<table width="1639" height="695" border="1" align="center">
+  <tbody>
+    <tr>
+      <td width="500" height="341" align="center" valign="middle"><p><img src="../image/5.jpg" width="500" height="300" alt=""/></p>
+      <p>this is my favorate beef noodles</p></td>
+      <td width="600" align="center"><p><img src="../image/6.jpg" width="600" height="300" alt=""/></p>
+      <p>and my dog!</p></td>
+      <td width="500" align="center" valign="middle"><p><img src="../image/7.jpg" width="500" height="300" alt=""/></p>
+      <p>my room（老二次元的柜子）</p></td>
+    </tr>
+    <tr>
+      <td height="22">&nbsp;</td>
+      <td align="center" bgcolor="#538400">to learn more about me</td>
+      <td width="500">&nbsp;</td>
+    </tr>
+    <tr>
+      <td height="244" align="center" valign="middle">my games<img src="../image/genshinLaunch.jpg" alt="" width="500" height="300" usemap="#Map"/></td>
+      <td align="center" valign="middle">my amines<img src="../image/8.jpg" alt="" width="600" height="300" usemap="#Map2"/></td>
+      <td width="500" align="center" valign="middle">my coding(难视)<img src="../image/8.png" alt="" width="500" height="300" usemap="#Map3"/></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+
+<map name="Map">
+  <area shape="rect" coords="-1,1,497,300" href="./launch.html" target="_self" alt="my games">
+</map>
+
+<map name="Map2">
+  <area shape="rect" coords="2,2,600,299" href="myamine.html">
+</map>
+
+<map name="Map3">
+  <area shape="rect" coords="2,1,503,306" href="code.html">
+</map>
+	<script>
+        // 在页面加载完成后，尝试手动触发音频播放（针对部分浏览器限制自动播放的情况）
+        window.onload = function () {
+            var audio = document.getElementById('bgm');
+            // 先暂停音频（如果之前有自动播放尝试但被浏览器阻止）
+            audio.pause();
+            // 再播放音频，这样可能绕过部分浏览器的自动播放限制
+            audio.play();
+        };
+
+        // 当用户首次与页面进行交互（比如点击页面任意位置）时，再次播放音频以确保声音正常响起
+        document.addEventListener('click', function () {
+            var audio = document.getElementById('bgm');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
+</body>
+</html>

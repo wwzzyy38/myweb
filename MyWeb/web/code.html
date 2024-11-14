@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片背景与表格示例</title>
+    <style>
+        body {
+            background-image: url('../image/launch1.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        table {
+            /* 这里可以添加更多表格相关的样式设置，比如边框样式等 */
+            border: 1px solid black;
+        }
+    body,td,th {
+	color: #FFFFFF;
+	font-size: 24px;
+}
+    </style>
+</head>
+
+<body>
+	 <!-- 使用HTML5 Audio元素播放背景音乐 -->
+
+    <audio id="bgm" controls="controls" muted="muted" autoplay="autoplay" loop="loop" >
+      <!-- 优先尝试加载MP3格式音频 -->
+      <source src="../image/bgm3.mp3" type="audio/mpeg">
+      <!-- 若MP3格式不可用，再尝试加载OGG格式音频 -->
+      <source src="../image/bgm3.ogg" type="audio/ogg">
+    </audio>
+    <table width="1000" border="1" align="center">
+        <tr>
+          <td height="50" align="center" valign="middle">此page主要分享认为自己写的很有用的代码，应该很屎山，但个人写完还是很有成就感，分享在这里，就当是对自己代码学习的记录，以后有了新的收获，也会不断更新。</td>
+        </tr>
+        <tr>
+            <td height="50" align="left" valign="middle"><p>第一个完全自主写成的文件操作程序（转置矩阵）</p>
+            <p>#include&lt;stdio.h&gt;</p>
+            <p>void turn(int arr[][100], int n, int m, FILE* fpo)<br>
+              {<br>
+              int arr_[100][100];<br>
+              for (int i = 0; i &lt; n; i++)<br>
+              for (int j = 0; j &lt; m; j++)<br>
+              {<br>
+              arr_[m - 1 - j][i] = arr[i][j];<br>
+              }<br>
+              int j;<br>
+              for (int i = 0; i &lt; m; i++)<br>
+              {<br>
+              for (j = 0; j &lt; n - 1; j++)<br>
+              {<br>
+              fprintf(fpo, &quot;%d &quot;, arr_[i][j]);<br>
+              }<br>
+              fprintf(fpo, &quot;%d&quot;, arr_[i][j]);<br>
+              fputc('\n', fpo);<br>
+              }</p>
+            <p>}<br>
+              int main(int argc, char* argv[])<br>
+              {<br>
+              int arr[100][100];<br>
+              int n, m;<br>
+              FILE* fpi = fopen(argv[0], &quot;r&quot;);<br>
+              FILE* fpo = fopen(&quot;matrix.out&quot;, &quot;w&quot;);<br>
+              fscanf(fpi, &quot;%d %d&quot;, &amp;m, &amp;n);<br>
+              for (int i = 0; i &lt; n; i++)<br>
+              for (int j = 0; j &lt; m; j++)<br>
+              {<br>
+              fscanf(fpi, &quot;%d&quot;, &amp;arr[i][j]);<br>
+              }<br>
+              turn(arr, n, m, fpo);<br>
+              }<br>
+            </p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>第二个成功的搜索算法（八皇后问题）</p>
+              <p>#include&lt;stdio.h&gt;<br>
+                int sum = 0;<br>
+                void search(int a[][8], int i, int j, int k);<br>
+                int iscorrect(int a[][8], int i, int j);<br>
+                int main(void)<br>
+                {<br>
+int a[8][8] = {0};<br>
+int j = 0,k=0;<br>
+search(a, 0, 0, 0);<br>
+}<br>
+void search(int a[][8], int i, int j, int k)<br>
+{<br>
+if (k == 8)<br>
+{<br>
+printf(&quot;%d\n&quot;, ++sum);<br>
+for (int i = 0; i &lt; 8; i++)<br>
+{<br>
+for (int j = 0; j &lt; 8; j++)<br>
+{<br>
+printf(&quot;%d &quot;, a[i][j]);<br>
+}<br>
+putchar('\n');<br>
+}<br>
+<br>
+putchar('\n');<br>
+<br>
+return;<br>
+}<br>
+<br>
+else<br>
+{<br>
+for (int j = 0; j &lt; 8; j++)<br>
+{<br>
+if (iscorrect(a, i, j))<br>
+{<br>
+a[i][j] = 1;</p>
+              <p> search(a, i + 1, 0, k + 1);</p>
+              <p> a[i][j] = 0;<br>
+                }<br>
+                }<br>
+  <br>
+                }<br>
+                }</p>
+              <p>int iscorrect(int a[][8], int i, int j)<br>
+                {<br>
+                for (int m = 0; m &lt; 8; m++)<br>
+                {<br>
+                if (a[i][m] == 1)<br>
+                return 0;<br>
+                }<br>
+                for (int n = 0; n &lt; 8; n++)<br>
+                {<br>
+                if (a[n][j] == 1)<br>
+                return 0;<br>
+                }<br>
+                for (int m = i-1, n = j-1; m &gt;= 0 &amp;&amp; n &gt;= 0; m--, n--)<br>
+                {<br>
+                if (a[m][n] == 1)<br>
+                return 0;<br>
+                }<br>
+                for (int m = i +1, n = j +1; m &lt; 8 &amp;&amp; n &lt;8; m++, n++)<br>
+                {<br>
+                if (a[m][n] == 1)<br>
+                return 0;<br>
+                }<br>
+                for (int m = i -1, n = j + 1; m  &gt;=0 &amp;&amp; n &lt; 8; m--, n++)<br>
+                {<br>
+                if (a[m][n] == 1)<br>
+                return 0;<br>
+                }<br>
+                for (int m = i + 1, n = j -1; m &lt; 8 &amp;&amp; n &gt;=0; m++, n--)<br>
+                {<br>
+                if (a[m][n] == 1)<br>
+                return 0;<br>
+                }<br>
+                return 1;<br>
+                }</p>
+            <p>&nbsp;</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>一个复杂的栈程序（逆波兰序列）</p>
+          <p>#include&lt;stdio.h&gt;<br>
+            #include&lt;stdlib.h&gt;</p>
+          <p> typedef struct Node {<br>
+            int data;<br>
+            struct Node* Next;<br>
+            }Node;<br>
+            int main(void)<br>
+            {<br>
+            Node* head = NULL;<br>
+            int num,flag=0,flag1=0;<br>
+            char c[100];<br>
+            int result;<br>
+            gets(c);</p>
+          <p> for (int i = 0; c[i] != '\0'; i++)<br>
+            {<br>
+            if (c[i] != ' '&amp;&amp;flag==0)<br>
+            {<br>
+            if (c[i] &gt;= '0' &amp;&amp; c[i] &lt;= '9')<br>
+            {<br>
+            if (flag1 == 0)<br>
+            {<br>
+            num = c[i] - '0';<br>
+            Node* p = (Node*)malloc(sizeof(Node));<br>
+            if (head == NULL)<br>
+            {<br>
+            head = p;<br>
+            p-&gt;data = num;<br>
+            p-&gt;Next = NULL;<br>
+            }<br>
+            else<br>
+            {<br>
+            p-&gt;Next = head;<br>
+            head = p;<br>
+            p-&gt;data = num;<br>
+            }<br>
+            }<br>
+            else<br>
+            {<br>
+            num = c[i] - '0';<br>
+            Node* p = (Node*)malloc(sizeof(Node));<br>
+            if (head == NULL)<br>
+            {<br>
+            head = p;<br>
+            p-&gt;data = -num;<br>
+            p-&gt;Next = NULL;<br>
+            }<br>
+            else<br>
+            {<br>
+            p-&gt;Next = head;<br>
+            head = p;<br>
+            p-&gt;data = -num;<br>
+            }<br>
+            }<br>
+  <br>
+            flag = 1;<br>
+            }<br>
+            else if ((c[i] == '+' || c[i] == '-' || c[i] == '*' || c[i] == '/')&amp;&amp;(c[i+1]==' '||c[i+1]=='\0'))<br>
+            {<br>
+            switch (c[i])<br>
+            {<br>
+            case '+':<br>
+            result = head-&gt;data + head-&gt;Next-&gt;data;<br>
+            break;<br>
+            case '-':<br>
+            result = head-&gt;Next-&gt;data - head-&gt;data;<br>
+            break;<br>
+            case '*':<br>
+            result = head-&gt;data * head-&gt;Next-&gt;data;<br>
+            break;<br>
+            case '/':<br>
+            result = head-&gt;Next-&gt;data / head-&gt;data;<br>
+            break;<br>
+            }</p>
+          <p> Node* p = (Node*)malloc(sizeof(Node));<br>
+            if (head-&gt;Next-&gt;Next == NULL)<br>
+            {<br>
+            head = p;<br>
+            p-&gt;data = result;<br>
+            p-&gt;Next = NULL;<br>
+            }<br>
+            else<br>
+            {<br>
+            p-&gt;data = result;<br>
+            p-&gt;Next = head-&gt;Next-&gt;Next;<br>
+            head = p;<br>
+            }</p>
+          <p> }<br>
+            else if (c[i] == '-' &amp;&amp; c[i + 1] != ' ' &amp;&amp; c[i + 1] != '\0')<br>
+            {<br>
+            flag1 = 1;<br>
+            }<br>
+            }<br>
+          </p>
+          <p> else if (c[i] != ' ' &amp;&amp; flag == 1)<br>
+            {<br>
+            if (flag1 == 0)<br>
+            {<br>
+            num = c[i] - '0';<br>
+            head-&gt;data = head-&gt;data * 10 + num;<br>
+            }<br>
+            else<br>
+            {<br>
+            num = -(c[i] - '0');<br>
+            head-&gt;data = head-&gt;data * 10 + num;<br>
+            }<br>
+            }<br>
+            else if (c[i] == ' ')<br>
+            {<br>
+            flag = 0;<br>
+            flag1 = 0;<br>
+            }<br>
+            }<br>
+            printf(&quot;%d&quot;, head-&gt;data);<br>
+          }</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>一个更加复杂的队列排序</p>
+          <p>#include&lt;stdio.h&gt;<br>
+            #include&lt;stdlib.h&gt;<br>
+            #include&lt;string.h&gt;<br>
+            typedef struct Node {<br>
+char num[20];<br>
+char name[20];<br>
+int Eng, Math, Phy, C;<br>
+double ave;<br>
+struct Node* Next;<br>
+}Node;<br>
+void swap(Node* a, Node* b) {<br>
+char tempNum[20];<br>
+char tempName[20];<br>
+int tempEng, tempMath, tempPhy, tempC;<br>
+double tempAve;</p>
+          <p> strcpy(tempNum, a-&gt;num);<br>
+            strcpy(tempName, a-&gt;name);<br>
+            tempEng = a-&gt;Eng;<br>
+            tempMath = a-&gt;Math;<br>
+            tempPhy = a-&gt;Phy;<br>
+            tempC = a-&gt;C;<br>
+            tempAve = a-&gt;ave;</p>
+          <p> strcpy(a-&gt;num, b-&gt;num);<br>
+            strcpy(a-&gt;name, b-&gt;name);<br>
+            a-&gt;Eng = b-&gt;Eng;<br>
+            a-&gt;Math = b-&gt;Math;<br>
+            a-&gt;Phy = b-&gt;Phy;<br>
+            a-&gt;C = b-&gt;C;<br>
+            a-&gt;ave = b-&gt;ave;</p>
+          <p> strcpy(b-&gt;num, tempNum);<br>
+            strcpy(b-&gt;name, tempName);<br>
+            b-&gt;Eng = tempEng;<br>
+            b-&gt;Math = tempMath;<br>
+            b-&gt;Phy = tempPhy;<br>
+            b-&gt;C = tempC;<br>
+            b-&gt;ave = tempAve;<br>
+            }<br>
+            void bubbleSort(Node** head) {<br>
+            int swapped;<br>
+            Node* current;<br>
+            Node* previous = NULL;<br>
+            Node* temp;<br>
+            do {<br>
+            swapped = 0;<br>
+            current = *head;</p>
+          <p> while (current-&gt;Next != previous) {<br>
+            if (current-&gt;ave &gt; current-&gt;Next-&gt;ave) {<br>
+            swap(current, current-&gt;Next);<br>
+            swapped = 1;<br>
+            }<br>
+            current = current-&gt;Next;<br>
+            }<br>
+            previous = current;<br>
+            } while (swapped);<br>
+            }<br>
+            int main(void)<br>
+            {<br>
+            char str[20];<br>
+            int n, std, sub, grade, flag = 0;<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            Node* head = NULL;<br>
+            while (1)<br>
+            {<br>
+            switch (n)<br>
+            {<br>
+            case 0:<br>
+            goto a;<br>
+            break;<br>
+            case 1:</p>
+          <p> scanf(&quot;%d&quot;, &amp;std);<br>
+            int i = 0;<br>
+            Node* p = head;<br>
+            if (flag == 0)<br>
+            {<br>
+            flag++;<br>
+            i++;<br>
+            p = (Node*)malloc(sizeof(Node));<br>
+            head = p;<br>
+            p-&gt;Next = NULL;<br>
+            scanf(&quot;%s %s %d %d %d %d&quot;, p-&gt;num, p-&gt;name, &amp;p-&gt;Eng, &amp;p-&gt;Math, &amp;p-&gt;Phy, &amp;p-&gt;C);<br>
+            if (std == 1)<br>
+            {<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            }<br>
+            }<br>
+            for (; i &lt; std; i++)<br>
+            {<br>
+            Node* s = head;<br>
+            while (s-&gt;Next != NULL)<br>
+            s = s-&gt;Next;<br>
+            p = (Node*)malloc(sizeof(Node));<br>
+            s-&gt;Next = p;<br>
+            p-&gt;Next = NULL;<br>
+            scanf(&quot;%s %s %d %d %d %d&quot;, p-&gt;num, p-&gt;name, &amp;p-&gt;Eng, &amp;p-&gt;Math, &amp;p-&gt;Phy, &amp;p-&gt;C);<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            }<br>
+            break;<br>
+            case 2:<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            q-&gt;ave = (double)(q-&gt;Eng + q-&gt;Math + q-&gt;Phy + q-&gt;C) / 4;<br>
+            }<br>
+            bubbleSort(&amp;head);<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            printf(&quot;%s %s %d %d %d %d\n&quot;, q-&gt;num, q-&gt;name, q-&gt;Eng, q-&gt;Math, q-&gt;Phy, q-&gt;C);<br>
+            }<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            break;<br>
+            case 3:<br>
+            scanf(&quot;%s %d %d&quot;, str, &amp;sub, &amp;grade);<br>
+            Node* q;<br>
+            for (q = head; strcmp(q-&gt;num, str) != 0; q = q-&gt;Next);<br>
+            switch (sub)<br>
+            {<br>
+            case 1:<br>
+            q-&gt;Eng = grade;<br>
+            break;<br>
+            case 2:<br>
+            q-&gt;Math = grade;<br>
+            break;<br>
+            case 3:<br>
+            q-&gt;Phy = grade;<br>
+            break;<br>
+            case 4:<br>
+            q-&gt;C = grade;<br>
+            break;<br>
+            }<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            break;<br>
+            case 4:<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            q-&gt;ave = (double)(q-&gt;Eng + q-&gt;Math + q-&gt;Phy + q-&gt;C) / 4;<br>
+            }<br>
+            bubbleSort(&amp;head);<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            printf(&quot;%s %s %.2lf\n&quot;, q-&gt;num, q-&gt;name, q-&gt;ave);<br>
+            }<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            break;<br>
+            case 5:<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            q-&gt;ave = (double)(q-&gt;Eng + q-&gt;Math + q-&gt;Phy + q-&gt;C) / 4;<br>
+            }<br>
+            bubbleSort(&amp;head);<br>
+            for (Node* q = head; q != NULL; q = q-&gt;Next)<br>
+            {<br>
+            printf(&quot;%s %s %d %.2lf\n&quot;, q-&gt;num, q-&gt;name, q-&gt;Eng + q-&gt;Math + q-&gt;Phy + q-&gt;C, q-&gt;ave);<br>
+            }<br>
+            scanf(&quot;%d&quot;, &amp;n);<br>
+            break;<br>
+            }<br>
+            }<br>
+            a:;<br>
+            }<br>
+          </p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>第一个回溯搜索程序（走迷宫问题）</p>
+          <p>#include&lt;stdio.h&gt;<br>
+            int sum = 0;<br>
+            void search(int a[][100], int b[][100], int c[][100], int n, int m, int i, int j);<br>
+            int main(void)<br>
+            {<br>
+int a[100][100], n, m;//原数组<br>
+int b[100][100] = { 0 };//标记数组<br>
+int c[100][100] = { 0 };// 输出数组<br>
+scanf(&quot;%d %d&quot;, &amp;n, &amp;m);<br>
+for (int i = 0; i &lt; n; i++)<br>
+{<br>
+for (int j = 0; j &lt; m; j++)<br>
+{<br>
+scanf(&quot;%d&quot;, &amp;a[i][j]);<br>
+}<br>
+}<br>
+b[0][0] = 1;<br>
+c[0][0] = 1;<br>
+search(a, b, c, n, m, 0, 0);<br>
+}<br>
+void search(int a[][100], int b[][100], int c[][100], int n, int m, int i, int j)//m，n是表的大小；i，j是搜索到的位置<br>
+{<br>
+if (i == n - 1 &amp;&amp; j == m - 1)<br>
+{<br>
+sum++;<br>
+//printf(&quot;%d\n&quot;, sum);<br>
+for (int i = 0; i &lt; n; i++)<br>
+{<br>
+for (int j = 0; j &lt; m-1; j++)<br>
+{<br>
+printf(&quot;%d &quot;, b[i][j]);<br>
+}<br>
+printf(&quot;%d&quot;, b[i][j]);<br>
+putchar('\n');<br>
+}<br>
+putchar('\n');<br>
+c[i][j] = 0;<br>
+return;<br>
+}</p>
+          <p> else<br>
+            {<br>
+            if (i &gt; 0 &amp;&amp; b[i - 1][j] == 0 &amp;&amp; a[i - 1][j] == 1)//up<br>
+            {<br>
+            b[i - 1][j] = 1;<br>
+            c[i - 1][j] = 1;<br>
+            search(a, b, c, n, m, i - 1, j);<br>
+            b[i - 1][j] = 0;<br>
+            c[i - 1][j] = 0;<br>
+            }<br>
+            if (i &lt; n - 1 &amp;&amp; b[i + 1][j] == 0 &amp;&amp; a[i + 1][j] == 1)//down<br>
+            {<br>
+            b[i + 1][j] = 1;<br>
+            c[i + 1][j] = 1;<br>
+            search(a, b, c, n, m, i + 1, j);<br>
+            b[i + 1][j] = 0;<br>
+            c[i + 1][j] = 0;<br>
+            }<br>
+            if (j &gt; 0 &amp;&amp; b[i][j - 1] == 0 &amp;&amp; a[i][j - 1] == 1)//left<br>
+            {<br>
+            b[i][j - 1] = 1;<br>
+            c[i][j - 1] = 1;<br>
+            search(a, b, c, n, m, i, j - 1);<br>
+            b[i][j - 1] = 0;<br>
+            c[i][j - 1] = 0;<br>
+            }<br>
+            if (j &lt; m - 1 &amp;&amp; b[i][j + 1] == 0 &amp;&amp; a[i][j + 1] == 1)//right<br>
+            {<br>
+            b[i][j + 1] = 1;<br>
+            c[i][j + 1] = 1;<br>
+            search(a, b, c, n, m, i, j + 1);<br>
+            b[i][j + 1] = 0;<br>
+            c[i][j + 1] = 0;<br>
+            }<br>
+            b[i][j] = 0;<br>
+            c[i][j] = 0;</p>
+          <p> }<br>
+          </p>
+          <p>}</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>军训期间完成的一个程序（教官的游戏）</p>
+          <p>//7不踩雷挑战<br>
+            #include&lt;stdio.h&gt;<br>
+            int main(void)<br>
+            {<br>
+int max, num;<br>
+printf(&quot;请输入最大范围:\n&quot;);<br>
+scanf_s(&quot;%d&quot;, &amp;max);<br>
+for (num = 1; num &lt;= max; num++)<br>
+{<br>
+if (num &gt;= 70 &amp;&amp; num &lt;= 79)<br>
+;<br>
+else if (num % 10 == 7)<br>
+;<br>
+else if (num % 7 != 0)<br>
+printf(&quot;%d\n&quot;, num);<br>
+}<br>
+return 0;<br>
+}</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>第一个C程序（cpp课后习题）</p>
+          <p>#include&lt;stdio.h&gt;<br>
+            void two(void);<br>
+            void one_three(void);<br>
+            int main(void)<br>
+            {<br>
+printf(&quot;starting now:\n&quot;);<br>
+one_three();<br>
+printf(&quot;Done!\n&quot;);<br>
+return 0;<br>
+}</p>
+          <p> void one_three(void)<br>
+            {<br>
+            printf(&quot;one\n&quot;);<br>
+            two();<br>
+            printf(&quot;three\n&quot;);</p>
+          <p>&nbsp;</p>
+          <p> }<br>
+            void two(void)<br>
+            {<br>
+            printf(&quot;two\n&quot;);<br>
+          }</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>第一个C++程序（虽然非常简单）</p>
+          <p>#include&lt;iostream&gt;<br>
+            using namespace std;<br>
+            int main(void)<br>
+            {<br>
+int c;<br>
+cin &gt;&gt; c;<br>
+cout &lt;&lt; c;<br>
+}</p></td>
+        </tr>
+        <tr>
+          <td align="left" valign="middle"><p>第一段py程序（身份证号）</p>
+          <p>import re<br>
+            wuhan_id_pattern = r'^4201\d{12}[0-9X]$'<br>
+            test_id = &quot;1145142010619800101001X&quot;<br>
+            match = re.match(wuhan_id_pattern, test_id)</p>
+          <p>if match is  None:<br>
+            print(f&quot;'{test_id}' is correct&quot;)<br>
+            else:<br>
+          print(f&quot;'{test_id}' is not correct&quot;)</p></td>
+        </tr>
+        <tr>
+          <td align="left"><p>第一段真正的屎山代码（计算日期）</p>
+            <p>#include &lt;stdio.h&gt;<br>
+            int main(void)<br>
+            {<br>
+            int year, month, date;<br>
+            scanf_s(&quot;%d %d %d&quot;, &amp;year, &amp;month, &amp;date);<br>
+            if (year % 4 == 0 &amp;&amp; year % 100 != 0 || year % 400 == 0)<br>
+            {<br>
+            switch (month)<br>
+            {<br>
+            case 1:<br>
+            printf(&quot;%d&quot;, date);<br>
+            break;<br>
+            case 2:<br>
+            printf(&quot;%d&quot;, date + 31);<br>
+            break;<br>
+            case 3:<br>
+            printf(&quot;%d&quot;, date + 31 + 29);<br>
+            break;<br>
+            case 4:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31);<br>
+            break;<br>
+            case 5:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30);<br>
+            break;<br>
+            case 6:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31);<br>
+            break;<br>
+            case 7:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30);<br>
+            break;<br>
+            case 8:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30 + 31);<br>
+            break;<br>
+            case 9:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31);<br>
+            break;<br>
+            case 10:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30);<br>
+            break;<br>
+            case 11:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31);<br>
+            break;<br>
+            case 12:<br>
+            printf(&quot;%d&quot;, date + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30);<br>
+            break;<br>
+            }<br>
+            }<br>
+            else<br>
+            {<br>
+            switch (month)<br>
+            {<br>
+            case 1:<br>
+            printf(&quot;%d&quot;, date);<br>
+            break;<br>
+            case 2:<br>
+            printf(&quot;%d&quot;, date + 31);<br>
+            break;<br>
+            case 3:<br>
+            printf(&quot;%d&quot;, date + 31 + 28);<br>
+            break;<br>
+            case 4:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31);<br>
+            break;<br>
+            case 5:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30);<br>
+            break;<br>
+            case 6:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31);<br>
+            break;<br>
+            case 7:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30);<br>
+            break;<br>
+            case 8:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30 + 31);<br>
+            break;<br>
+            case 9:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31);<br>
+            break;<br>
+            case 10:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30);<br>
+            break;<br>
+            case 11:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31);<br>
+            break;<br>
+            case 12:<br>
+            printf(&quot;%d&quot;, date + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30);<br>
+            break;<br>
+            }</p>
+            <p> }<br>
+              return 0;<br>
+          }</p></td>
+        </tr>
+        <tr>
+          <td align="center">点击下图返回</td>
+        </tr>
+        <tr>
+          <td align="center"><img src="../image/codes.png" alt="" width="800" height="450" usemap="#Map"/></td>
+        </tr>
+    </table>
+
+<map name="Map">
+  <area shape="rect" coords="2,4,802,450" href="wyz.html">
+</map>
+	<script>
+        // 在页面加载完成后，尝试手动触发音频播放（针对部分浏览器限制自动播放的情况）
+        window.onload = function () {
+            var audio = document.getElementById('bgm');
+            // 先暂停音频（如果之前有自动播放尝试但被浏览器阻止）
+            audio.pause();
+            // 再播放音频，这样可能绕过部分浏览器的自动播放限制
+            audio.play();
+        };
+
+        // 当用户首次与页面进行交互（比如点击页面任意位置）时，再次播放音频以确保声音正常响起
+        document.addEventListener('click', function () {
+            var audio = document.getElementById('bgm');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
+</body>
+
+</html>
